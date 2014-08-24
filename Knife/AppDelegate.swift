@@ -15,8 +15,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
-        // Override point for customization after application launch.
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        window!.rootViewController = ViewController(nibName: nil, bundle: nil)
+        window!.makeKeyAndVisible()
+        
+        
         return true
+    }
+    
+    func setupThirdpart() {
+        MobClick.startWithAppkey("53f950eafd98c585f603e30e", reportPolicy: REALTIME, channelId: nil)
+  
+        let version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as String
+        
+        MobClick.setAppVersion(version)
     }
 
     func applicationWillResignActive(application: UIApplication) {
